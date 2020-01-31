@@ -9,7 +9,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -33,14 +32,14 @@ public class DispatcherServlet extends GenericServlet {
     }
 
     @Override
-    public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
+    public void service(ServletRequest servletRequest, ServletResponse servletResponse) {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         //解析URL
         String path = request.getServletPath().substring(1); // staff/add.do或login.do
         int index = path.indexOf('/');
-        String beanName = null;
-        String methodName = null;
+        String beanName;
+        String methodName;
         if (index != -1) { // staff/add.do
             beanName = path.substring(0, index) + "Controller"; // staffController
             methodName = path.substring(index + 1, path.indexOf(".do")); // add

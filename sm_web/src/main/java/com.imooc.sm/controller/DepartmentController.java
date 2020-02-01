@@ -13,8 +13,12 @@ import java.util.List;
 
 @Controller("departmentController")
 public class DepartmentController {
+    private final DepartmentService departmentService;
+
     @Autowired
-    private DepartmentService departmentService;
+    public DepartmentController(DepartmentService departmentService) {
+        this.departmentService = departmentService;
+    }
 
     /**
      * 查看所有部门
@@ -32,8 +36,8 @@ public class DepartmentController {
     }
 
     public void add(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String name = (String) request.getParameter("name");
-        String address = (String) request.getParameter("address");
+        String name = request.getParameter("name");
+        String address = request.getParameter("address");
         Department department = new Department(name, address);
         this.departmentService.add(department);
         response.sendRedirect("list.do");
@@ -48,8 +52,8 @@ public class DepartmentController {
 
     public void edit(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Integer id = Integer.parseInt(request.getParameter("id"));
-        String name = (String) request.getParameter("name");
-        String address = (String) request.getParameter("address");
+        String name = request.getParameter("name");
+        String address = request.getParameter("address");
 
         Department department = this.departmentService.get(id);
         department.setName(name);

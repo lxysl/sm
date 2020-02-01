@@ -12,8 +12,12 @@ import java.util.List;
 @Service("staffService")
 public class StaffServiceImpl implements StaffService {
 
+    private final StaffDao staffDao;
+
     @Autowired
-    private StaffDao staffDao;
+    public StaffServiceImpl(StaffDao staffDao) {
+        this.staffDao = staffDao;
+    }
 
     public void add(Staff staff) {
         staff.setPassword("123456");

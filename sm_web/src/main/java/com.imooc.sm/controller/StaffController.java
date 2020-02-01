@@ -18,10 +18,14 @@ import java.util.List;
 
 @Controller("staffController")
 public class StaffController {
+    private final StaffService staffService;
+    private final DepartmentService departmentService;
+
     @Autowired
-    private StaffService staffService;
-    @Autowired
-    private DepartmentService departmentService;
+    public StaffController(StaffService staffService, DepartmentService departmentService) {
+        this.staffService = staffService;
+        this.departmentService = departmentService;
+    }
 
     /**
      * 查看所有员工
@@ -41,11 +45,11 @@ public class StaffController {
     }
 
     public void add(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String account = (String) request.getParameter("account");
-        String name = (String) request.getParameter("name");
-        String sex = (String) request.getParameter("sex");
-        String idNumber = (String) request.getParameter("idNumber");
-        String info = (String) request.getParameter("info");
+        String account = request.getParameter("account");
+        String name = request.getParameter("name");
+        String sex = request.getParameter("sex");
+        String idNumber = request.getParameter("idNumber");
+        String info = request.getParameter("info");
         Date bornDate = null;
         try {
             //String转Date
@@ -71,11 +75,11 @@ public class StaffController {
 
     public void edit(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Integer id = Integer.parseInt(request.getParameter("id"));
-        String account = (String) request.getParameter("account");
-        String name = (String) request.getParameter("name");
-        String sex = (String) request.getParameter("sex");
-        String idNumber = (String) request.getParameter("idNumber");
-        String info = (String) request.getParameter("info");
+        String account = request.getParameter("account");
+        String name = request.getParameter("name");
+        String sex = request.getParameter("sex");
+        String idNumber = request.getParameter("idNumber");
+        String info = request.getParameter("info");
         Date bornDate = null;
         try {
             //String转Date
@@ -98,10 +102,10 @@ public class StaffController {
 
         this.staffService.edit(staff);
         //判断修改用户是否为当前登录用户，如果相同则把修改后的用户放入Session中
-//        Staff staff1 = (Staff) request.getSession().getAttribute("USER");
-//        if (staff1.getId().equals(staff.getId())) {
-//            request.getSession().setAttribute("USER", staff);
-//        }
+        Staff staff1 = (Staff) request.getSession().getAttribute("USER");
+        if (staff1.getId().equals(staff.getId())) {
+            request.getSession().setAttribute("USER", staff);
+        }
         response.sendRedirect("list.do");
     }
 

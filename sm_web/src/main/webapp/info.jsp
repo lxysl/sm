@@ -40,52 +40,49 @@
                 <ul class="hypz gjpz clearfix">
                     <li class="clearfix">
                         <span class="title">账户名：</span>
-                        <div class="li_r">${OBJ.account}</div>
+                        <div class="li_r">${USER.account}</div>
                     </li>
                     <li class="clearfix">
                         <span class="title">状态：</span>
-                        <div class="li_r">${OBJ.status}</div>
+                        <div class="li_r">${USER.status}</div>
                     </li>
                     <li class="clearfix">
                         <span class="title">部门：</span>
-                        <div class="li_r">${OBJ.department.name}</div>
+                        <div class="li_r">${USER.department.name}</div>
                     </li>
                     <li class="clearfix">
                         <span class="title">姓名：</span>
-                        <div class="li_r">${OBJ.name}</div>
+                        <div class="li_r">${USER.name}</div>
                     </li>
                     <li class="clearfix">
                         <span class="title">性别：</span>
-                        <div class="li_r">${OBJ.sex}</div>
+                        <div class="li_r">${USER.sex}</div>
                     </li>
                     <li class="clearfix">
                         <span class="title">身份证号：</span>
-                        <div class="li_r">${OBJ.idNumber}</div>
+                        <div class="li_r">${USER.idNumber}</div>
                     </li>
                     <li class="clearfix">
                         <span class="title">出生日期：</span>
                         <div class="li_r">
-                            <fmt:formatDate value="${OBJ.bornDate}" pattern="yyyy-MM-dd"/>
+                            <fmt:formatDate value="${USER.bornDate}" pattern="yyyy-MM-dd"/>
                         </div>
                     </li>
                     <li class="clearfix">
                         <span class="title">入职时间：</span>
                         <div class="li_r">
-                            <fmt:formatDate value="${OBJ.workTime}" pattern="yyyy-MM-dd hh:mm"/>
+                            <fmt:formatDate value="${USER.workTime}" pattern="yyyy-MM-dd hh:mm"/>
                         </div>
                     </li>
                     <li class="clearfix">
                         <span class="title">离职时间：</span>
                         <div class="li_r">
-                            <fmt:formatDate value="${OBJ.leaveTime}" pattern="yyyy-MM-dd hh:mm"/>
+                            <fmt:formatDate value="${USER.leaveTime}" pattern="yyyy-MM-dd hh:mm"/>
                         </div>
                     </li>
                     <li class="clearfix">
                         <span class="title">备注：</span>
-                        <div class="li_r">${OBJ.info}</div>
-                    </li>
-                    <li class="tj_btn">
-                        <a href="javascript:history.go(-1);" class="back">返回</a>
+                        <div class="li_r">${USER.info}</div>
                     </li>
                 </ul>
                 <!--高级配置-->

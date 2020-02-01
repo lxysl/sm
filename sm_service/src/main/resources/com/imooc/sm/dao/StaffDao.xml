@@ -5,7 +5,7 @@
         <id property="id" column="id" javaType="Integer"/>
         <result property="account" column="account" javaType="String"/>
         <result property="password" column="password" javaType="String"/>
-        <result property="status" column="password" javaType="String"/>
+        <result property="status" column="status" javaType="String"/>
         <result property="did" column="did" javaType="Integer"/>
         <result property="name" column="name" javaType="String"/>
         <result property="sex" column="sex" javaType="String"/>
@@ -14,7 +14,8 @@
         <result property="leaveTime" column="leave_time" javaType="java.util.Date"/>
         <result property="bornDate" column="born_date" javaType="java.util.Date"/>
         <result property="info" column="info" javaType="String"/>
-        <association property="department" column="did" javaType="Department" select="com.imooc.sm.dao.DepartmentDao.selectById"/>
+        <association property="department" column="did" javaType="Department"
+                     select="com.imooc.sm.dao.DepartmentDao.selectById"/>
     </resultMap>
     <insert id="insert" parameterType="Staff" useGeneratedKeys="true">
         INSERT INTO Staff(account, password, status, did, name, sex, id_number, work_time, leave_time, born_date, info)

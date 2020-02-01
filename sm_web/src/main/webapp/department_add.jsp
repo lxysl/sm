@@ -52,7 +52,6 @@
                                 <label>
                                     <input class="chang" name="address" type="text"/>
                                 </label>
-                                <i>*</i>
                             </div>
                         </li>
                         <li class="tj_btn">

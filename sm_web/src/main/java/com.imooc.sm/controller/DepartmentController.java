@@ -22,7 +22,7 @@ public class DepartmentController {
      * 页面：/department_list.jsp
      */
     public void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Department> list = departmentService.getAll();
+        List<Department> list = this.departmentService.getAll();
         request.setAttribute("LIST", list);
         request.getRequestDispatcher("../department_list.jsp").forward(request, response);
     }
@@ -50,8 +50,10 @@ public class DepartmentController {
         Integer id = Integer.parseInt(request.getParameter("id"));
         String name = (String) request.getParameter("name");
         String address = (String) request.getParameter("address");
-        Department department = new Department(name, address);
-        department.setId(id);
+
+        Department department = this.departmentService.get(id);
+        department.setName(name);
+        department.setAddress(address);
 
         this.departmentService.edit(department);
         response.sendRedirect("list.do");

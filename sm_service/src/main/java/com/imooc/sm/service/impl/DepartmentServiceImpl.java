@@ -10,8 +10,11 @@ import java.util.List;
 
 @Service("departmentService")
 public class DepartmentServiceImpl implements DepartmentService {
-    @Autowired
-    private DepartmentDao departmentDao;
+    private final DepartmentDao departmentDao;
+
+    public DepartmentServiceImpl(DepartmentDao departmentDao) {
+        this.departmentDao = departmentDao;
+    }
 
     public void add(Department department) {
         this.departmentDao.insert(department);
